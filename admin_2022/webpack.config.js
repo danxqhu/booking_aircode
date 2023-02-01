@@ -16,23 +16,24 @@ module.exports = {
     // historyApiFallback: true,
 
     // 配置单个代理
-    // proxy: 'http://www.johnnywork.com/wanchaotest',
+    proxy: 'http://www.johnnywork.com/wanchaotest',
 
     // 配置多个代理
-    proxy: {
-      allowedHosts: ['https://yth2veim6m.hk.aircode.run'],
-      '/api': {
-        // target: "https://127.0.0.0:8080", // 目标主机
-        target: 'https://yth2veim6m.hk.aircode.run',
-        // ws: true, //代理的WebSockets
-        // changeOrigin: true, // 允许websockets跨域
-        pathRewrite: {
-          '^/api': '',
-        },
-      },
-    },
+    // proxy: {
+    //   allowedHosts: ['https://yth2veim6m.hk.aircode.run'],
+    //   '/api': {
+    //     // target: "https://127.0.0.0:8080", // 目标主机
+    //     target: 'https://yth2veim6m.hk.aircode.run',
+    //     // ws: true, //代理的WebSockets
+    //     // changeOrigin: true, // 允许websockets跨域
+    //     pathRewrite: {
+    //       '^/api': '',
+    //     },
+    //   },
+    // },
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
   },
+  devtool: 'cheap-module-source-map',
 };
