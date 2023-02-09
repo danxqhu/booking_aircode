@@ -9,7 +9,7 @@ import axios from 'axios';
 const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split('/')[1];
-  console.log(path);
+  // console.log(path);
   const [list, setList] = useState([]);
   const { data, loading, error } = useFetch(`/${path}`);
   // const { data, loading, error } = useFetch(`/users`);
