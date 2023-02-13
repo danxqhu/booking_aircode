@@ -6,8 +6,6 @@ const useFetch = url => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const baseUrl = 'https://yth2veim6m.hk.aircode.run';
-  // const preUrl = '/api';
-  // console.log('url', preUrl + url);
   let newUrl = baseUrl + url;
 
   useEffect(() => {

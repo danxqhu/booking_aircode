@@ -28,7 +28,13 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post('/auth/register', newUser);
+      console.log(info);
+
+      // await axios.post('/auth/register', newUser);
+      const message = await axios.post('https://yth2veim6m.hk.aircode.run/register', newUser);
+      console.log(message.data);
+      alert(message.data.message);
+      // message.status 200
     } catch (err) {
       console.log(err);
     }

@@ -27,11 +27,11 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          {/* <p className="title">MAIN</p>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
-          </li>
+          </li> */}
           <p className="title">LISTS</p>
           <Link to="/getusers" style={{ textDecoration: 'none' }}>
             <li>
@@ -51,7 +51,7 @@ const Sidebar = () => {
               <span>Rooms</span>
             </li>
           </Link>
-          <li>
+          {/* <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>
           </li>
@@ -63,8 +63,9 @@ const Sidebar = () => {
           <li>
             <NotificationsNoneIcon className="icon" />
             <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
+          </li> */}
+
+          {/* <p className="title">SERVICE</p>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>System Health</span>
@@ -76,7 +77,7 @@ const Sidebar = () => {
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
