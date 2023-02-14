@@ -5,18 +5,17 @@ import { AuthContextProvider } from './context/AuthContext';
 import { DarkModeContextProvider } from './context/darkModeContext';
 // import loading from './components/loading';
 
-// // 全局挂载组件
-// React.$message = function (arg) {
-//   // 默认部分参数
-//   const { type = 'success', content, duration = 1, onclose } = { ...arg };
-//   loading[type](content, duration, onclose);
-// };
+import store from './store/index';
+
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
       <DarkModeContextProvider>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </DarkModeContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,

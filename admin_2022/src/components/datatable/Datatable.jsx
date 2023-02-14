@@ -1,6 +1,6 @@
 import './datatable.scss';
 import { DataGrid } from '@mui/x-data-grid';
-import { userColumns, userRows } from '../../datatablesource';
+// import { userColumns, userRows } from '../../datatablesource';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useFetch from '../../hooks/useFetch';
@@ -21,8 +21,11 @@ const Datatable = ({ columns }) => {
     } catch (err) {}
   };
 
+  console.log('list:', list);
+
   useEffect(() => {
     setList(data);
+    // setList(data.map(item=>{return item._id } ));
   }, [data]);
 
   const actionColumn = [

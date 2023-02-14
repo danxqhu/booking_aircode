@@ -7,13 +7,18 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import { productInputs, userInputs } from './formSource';
 import { userInputs } from './formSource';
 import './style/dark.scss';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/AuthContext';
 import { hotelColumns, roomColumns, userColumns } from './datatablesource';
 import NewHotel from './pages/newHotel/NewHotel';
 import NewRoom from './pages/newRoom/NewRoom';
 import Loading from './components/loading/Loading';
+import store from './store/index';
+import { connect } from 'react-redux';
+// import { showloading } from './store/actions/loading';
+
+// import { Provider } from 'react-redux';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -27,7 +32,24 @@ function App() {
     return children;
   };
 
-  const showLoading = false;
+  // const loading = false;
+  // useEffect(() => {
+  //   store.dispatch(showloading({ loading: true }));
+  // }, [loading]);
+
+  // useEffect(() => {
+  //   store.subscribe(() => {
+  //     this.forceUpdate();
+  //   });
+  // }, [loading]);
+
+  let loading = store.getState().loading;
+
+  console.log(store.getState(), loading);
+
+  // useEffect(() => {
+  //   loading = store.getState().loading;
+  // }, [loading]);
 
   return (
     <div className={darkMode ? 'app dark' : 'app'}>
@@ -125,7 +147,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      {showLoading && <Loading></Loading>}
+      {loading && <Loading></Loading>}
     </div>
   );
 }
