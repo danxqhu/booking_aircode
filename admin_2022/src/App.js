@@ -32,24 +32,7 @@ function App() {
     return children;
   };
 
-  // const loading = false;
-  // useEffect(() => {
-  //   store.dispatch(showloading({ loading: true }));
-  // }, [loading]);
-
-  // useEffect(() => {
-  //   store.subscribe(() => {
-  //     this.forceUpdate();
-  //   });
-  // }, [loading]);
-
   let loading = store.getState().loading;
-
-  console.log(store.getState(), loading);
-
-  // useEffect(() => {
-  //   loading = store.getState().loading;
-  // }, [loading]);
 
   return (
     <div className={darkMode ? 'app dark' : 'app'}>
@@ -65,7 +48,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="getusers">
+            <Route path="users">
               <Route
                 index
                 element={
@@ -91,7 +74,7 @@ function App() {
                 }
               />
             </Route>
-            <Route path="gethotels">
+            <Route path="hotels">
               <Route
                 index
                 element={

@@ -33,13 +33,13 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li> */}
           <p className="title">LISTS</p>
-          <Link to="/getusers" style={{ textDecoration: 'none' }}>
+          <Link to="/users" style={{ textDecoration: 'none' }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/gethotels" style={{ textDecoration: 'none' }}>
+          <Link to="/hotels" style={{ textDecoration: 'none' }}>
             <li>
               <StoreIcon className="icon" />
               <span>Hotels</span>

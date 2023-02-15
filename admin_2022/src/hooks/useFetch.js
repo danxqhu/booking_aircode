@@ -8,18 +8,20 @@ const useFetch = url => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const baseUrl = 'https://yth2veim6m.hk.aircode.run';
-  let newUrl = baseUrl + url;
+  // const baseUrl = 'https://yth2veim6m.hk.aircode.run';
+  // let newUrl = baseUrl + url;
+
+  // console.log(url);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       store.dispatch(showloading(true));
 
-      console.log(store.getState());
+      // console.log(store.getState());
       try {
         // console.log('url:', url);
-        const res = await axios.get(newUrl);
+        const res = await axios.get(url);
         // console.log(res.data.result);
 
         setData(res.data.result);
@@ -28,19 +30,19 @@ const useFetch = url => {
       }
       setLoading(false);
       store.dispatch(hideloading(false));
-      console.log(store.getState());
+      // console.log(store.getState());
     };
     fetchData();
 
     // const unsubscribe = store.subscribe(fetchData);
     // unsubscribe();
-  }, [newUrl]);
+  }, [url]);
 
   const reFetch = async () => {
     setLoading(true);
     store.dispatch(showloading(true));
     try {
-      const res = await axios.get(newUrl);
+      const res = await axios.get(url);
 
       setData(res.data);
     } catch (err) {

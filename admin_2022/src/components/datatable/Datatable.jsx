@@ -5,23 +5,47 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useFetch from '../../hooks/useFetch';
 import axios from 'axios';
+import Api from '../../util/Api';
 
 const Datatable = ({ columns }) => {
+  const [list, setList] = useState([]);
+  // let data = [];
   const location = useLocation();
   const path = location.pathname.split('/')[1];
   // console.log(path);
-  const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`/${path}`);
-  // const { data, loading, error } = useFetch(`/users`);
+  let requestUrl = '';
+  if (path === 'users') {
+    requestUrl = Api.getUsers;
+  }
+  if (path === 'hotels') {
+    requestUrl = Api.getHotels;
+  }
+  if (path === 'rooms') {
+    requestUrl = Api.getRooms;
+  }
+  const { data, loading, error } = useFetch(requestUrl);
+  // data = useFetch(requestUrl).data;
 
   const handleDelete = async id => {
+    console.log('Delete id:', id);
+    console.log('Delete path:', `/${path}/${id}`);
+    if (path === 'users') {
+      requestUrl = Api.deleteUser;
+    }
+    if (path === 'hotels') {
+      requestUrl = Api.deleteHotel;
+    }
+    if (path === 'rooms') {
+      requestUrl = Api.deleteRoom;
+    }
+    console.log(requestUrl);
     try {
-      await axios.delete(`/${path}/${id}`);
+      await axios.post(`${requestUrl}`, { id });
       setList(list.filter(item => item._id !== id));
     } catch (err) {}
   };
 
-  console.log('list:', list);
+  // console.log('list:', list);
 
   useEffect(() => {
     setList(data);
@@ -50,7 +74,8 @@ const Datatable = ({ columns }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {path}
+        <div className="datatableLeftTitle">{path}</div>
+
         <Link to={`/${path}/new`} className="link">
           Add New
         </Link>
