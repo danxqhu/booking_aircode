@@ -12,7 +12,7 @@ const useFetch = url => {
       try {
         const res = await axios.get(url);
 
-        setData(res.data);
+        setData(res.data.result);
       } catch (err) {
         setError(err);
       }
@@ -26,7 +26,7 @@ const useFetch = url => {
     try {
       const res = await axios.get(url);
 
-      setData(res.data);
+      setData(res.data.result);
     } catch (err) {
       setError(err);
     }

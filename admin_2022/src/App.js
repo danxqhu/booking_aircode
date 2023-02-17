@@ -25,9 +25,9 @@ function App() {
 
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
-    if (!user) {
-      return <Navigate to="/login"></Navigate>;
-    }
+    // if (!user) {
+    //   return <Navigate to="/login"></Navigate>;
+    // }
 
     return children;
   };
