@@ -1,13 +1,11 @@
 import React from 'react';
 import useFetch from '../../hooks/useFetch';
 import './featured.scss';
-import Api from '../../util/Api';
+import Api from '../../utils/Api';
 
 export default function Featured() {
   const { data, loading, error } = useFetch(Api.getcities);
-  // const { data, loading, error } = axios.get(Api.getcities);
-  // const { data, loading, error } = useFetch('/hotels/countByCity?cities=Berlin,Madrid,London');
-  console.log(data);
+  // console.log(data, loading);
   return (
     <div className="featured">
       {loading ? (
@@ -21,7 +19,7 @@ export default function Featured() {
               alt=""
             />
             <div className="featuredTitles">
-              <h1>Shanghai</h1>
+              <h1>Berlin</h1>
               <h2>{data[0]?.cities[0]} properties</h2>
             </div>
           </div>
