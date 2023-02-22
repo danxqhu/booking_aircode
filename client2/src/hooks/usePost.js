@@ -6,34 +6,34 @@ const usePost = (url, params) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.post(url, params);
-
-        setData(res.data.result);
-      } catch (err) {
-        setError(err);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [url]);
-
-  const rePost = async () => {
+  async function fetchData(params) {
     setLoading(true);
     try {
-      const res = await axios.get(url, params);
+      const res = await axios.post(url, params);
 
       setData(res.data.result);
+
+      console.log('fetchData result:', res.data.result, params);
     } catch (err) {
       setError(err);
     }
     setLoading(false);
-  };
+  }
+  // fetchData();
 
-  return { data, loading, error, rePost };
+  // const rePost = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const res = await axios.get(url, params);
+
+  //     setData(res.data.result);
+  //   } catch (err) {
+  //     setError(err);
+  //   }
+  //   setLoading(false);
+  // };
+
+  return { fetchData, data, loading, error };
 };
 
 export default usePost;

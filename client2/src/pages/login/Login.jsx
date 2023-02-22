@@ -12,7 +12,9 @@ const Login = () => {
     password: undefined,
   });
 
-  const { user, loading, error, dispatch } = useContext(AuthContext);
+  // const { user, loading, error, dispatch } = useContext(AuthContext);
+
+  const { fetchData, data, loading, error } = usePost(Api.bookinglogin, JSON.stringify(credentials));
 
   const navigate = useNavigate();
 
@@ -20,12 +22,19 @@ const Login = () => {
     setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  function loginPost(credentials) {
+    // let encryptedCredentials = credentials
+    // setCredentials()
+    fetchData(credentials);
+  }
+
   // const handleClick = async e => {
   const handleClick = e => {
     e.preventDefault();
-    dispatch({ type: 'LOGIN_START' });
+    // dispatch({ type: 'LOGIN_START' });
     // navigate('/');
-    // const { data, loading, error } = usePost(Api.bookinglogin, credentials);
+
+    loginPost();
     try {
       // const res = await axios.post('/auth/login', credentials);
       // dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
@@ -34,7 +43,7 @@ const Login = () => {
     }
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className="login">

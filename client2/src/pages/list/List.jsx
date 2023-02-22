@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Header from '../../components/header/Header';
 import { DateRange } from 'react-date-range';
@@ -23,7 +23,19 @@ export default function List() {
 
   // const { data, loading, error, reFetch } = useFetch(`/searchhotels?city=${destination}&min=${min || 0}&max=${max || 999}`);
 
-  const { data, loading, error, rePost } = usePost(Api.searchhotelsbycity, destination);
+  const { fetchData, data, loading, error, rePost } = usePost(Api.searchhotelsbycity, destination);
+  // fetchData();
+
+  // function serachHotelsByCity(destination) {
+  //   fetchData(destination);
+  // }
+
+  useEffect(() => {
+    // serachHotelsByCity(destination);
+    fetchData(destination);
+  }, [destination]);
+
+  // serachHotelsByCity(destination);
 
   // console.log('List dates:', data);
 
