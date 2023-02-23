@@ -22,9 +22,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=8800 && react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "set PORT=8800 && craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.0.0",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^7.8.3",

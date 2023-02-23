@@ -6,12 +6,16 @@ import { useEffect, useState } from 'react';
 import useFetch from '../../hooks/useFetch';
 import axios from 'axios';
 import Api from '../../util/Api';
+import { useSelector, useDispatch } from 'react-redux';
+import { toOpen, toClose } from '../../features/loading/loadingSlice';
 
 const Datatable = ({ columns }) => {
   const [list, setList] = useState([]);
   // let data = [];
   const location = useLocation();
   const path = location.pathname.split('/')[1];
+  const dispatch = useDispatch();
+
   // console.log(path);
   let requestUrl = '';
   if (path === 'users') {
@@ -44,6 +48,32 @@ const Datatable = ({ columns }) => {
       setList(list.filter(item => item._id !== id));
     } catch (err) {}
   };
+
+  // console.log('axios loading:', loading);
+
+  // loading ? dispatch(toOpen()) : dispatch(toClose());
+  // if (loading) {
+  //   dispatch(toOpen());
+  //   console.log(444);
+  // }
+  // if (!loading) {
+  //   dispatch(toClose());
+  //   console.log(333);
+  // }
+
+  // useEffect(() => {
+  //   if (loading) {
+  //     dispatch(toOpen());
+  //     console.log(1);
+  //   }
+  //   // if (!loading && !isUnmount) {
+  //   //   dispatch(toClose());
+  //   //   console.log(2);
+  //   // }
+  //   // loading ? dispatch(toOpen()) : dispatch(toClose());
+  // }, [loading, dispatch]);
+
+  const loading2 = useSelector(state => console.log(state.loading));
 
   // console.log('list:', list);
 

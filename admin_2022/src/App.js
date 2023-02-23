@@ -14,14 +14,19 @@ import { hotelColumns, roomColumns, userColumns } from './datatablesource';
 import NewHotel from './pages/newHotel/NewHotel';
 import NewRoom from './pages/newRoom/NewRoom';
 import Loading from './components/loading/Loading';
-import store from './store/index';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
+import { toOpen, toClose, selectLoading } from './features/loading/loadingSlice';
+// import store from './store/index';
+// import { connect } from 'react-redux';
 // import { showloading } from './store/actions/loading';
 
 // import { Provider } from 'react-redux';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+
+  const loading = useSelector(selectLoading);
+  // console.log('App.js', loading);
 
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
@@ -32,7 +37,8 @@ function App() {
     return children;
   };
 
-  let loading = store.getState().loading;
+  // let loading = store.getState().loading;
+  // console.log(props.loading);
 
   return (
     <div className={darkMode ? 'app dark' : 'app'}>
@@ -135,4 +141,11 @@ function App() {
   );
 }
 
+// const mapStateToProps = state => {
+//   return {
+//     loading: state.loading.value,
+//   };
+// };
+
 export default App;
+// export default connect(mapStateToProps)(App);

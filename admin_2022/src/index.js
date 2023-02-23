@@ -5,7 +5,8 @@ import { AuthContextProvider } from './context/AuthContext';
 import { DarkModeContextProvider } from './context/darkModeContext';
 // import loading from './components/loading';
 
-import store from './store/index';
+import store from './app/store';
+// import store from './store/index';
 
 import { Provider } from 'react-redux';
 
