@@ -1,16 +1,25 @@
-const DarkModeReducer = (state, action) => {
+interface State {
+  darkMode: boolean;
+}
+
+interface Action {
+  type: string;
+}
+
+const DarkModeReducer = (state: State, action: Action) => {
+  // console.log('state:', state, 'action:', action);
   switch (action.type) {
-    case "LIGHT": {
+    case 'LIGHT': {
       return {
         darkMode: false,
       };
     }
-    case "DARK": {
+    case 'DARK': {
       return {
         darkMode: true,
       };
     }
-    case "TOGGLE": {
+    case 'TOGGLE': {
       return {
         darkMode: !state.darkMode,
       };

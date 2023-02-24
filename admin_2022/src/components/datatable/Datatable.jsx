@@ -7,9 +7,12 @@ import useFetch from '../../hooks/useFetch';
 import axios from 'axios';
 import Api from '../../util/Api';
 import { useSelector, useDispatch } from 'react-redux';
-import { toOpen, toClose } from '../../features/loading/loadingSlice';
+// import { toOpen, toClose } from '../../features/loading/loadingSlice';
+
+// type columnsType = {};
 
 const Datatable = ({ columns }) => {
+  // const Datatable = ({ columns }: any) => {
   const [list, setList] = useState([]);
   // let data = [];
   const location = useLocation();
@@ -31,6 +34,7 @@ const Datatable = ({ columns }) => {
   // data = useFetch(requestUrl).data;
 
   const handleDelete = async id => {
+    // const handleDelete = async (id: string) => {
     console.log('Delete id:', id);
     console.log('Delete path:', `/${path}/${id}`);
     if (path === 'users') {
@@ -74,6 +78,7 @@ const Datatable = ({ columns }) => {
   // }, [loading, dispatch]);
 
   const loading2 = useSelector(state => console.log(state.loading));
+  // const loading2 = useSelector((state: object) => console.log(state.loading));
 
   // console.log('list:', list);
 
