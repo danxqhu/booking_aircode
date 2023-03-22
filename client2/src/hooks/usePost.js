@@ -5,6 +5,7 @@ const usePost = (url, params) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  // const stateRef = useRef();
 
   async function fetchData(params) {
     setLoading(true);
@@ -12,13 +13,17 @@ const usePost = (url, params) => {
       const res = await axios.post(url, params);
 
       setData(res.data.result);
-
-      console.log('fetchData result:', res.data.result, params);
+      // stateRef.currentData = data;
     } catch (err) {
       setError(err);
+      console.log('err:', err);
     }
     setLoading(false);
   }
+
+  // useEffect(() => {
+  //   console.log('fetchData result:', data);
+  // }, [data]);
   // fetchData();
 
   // const rePost = async () => {

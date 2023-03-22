@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './login.scss';
 import { useNavigate } from 'react-router-dom';
@@ -22,19 +22,29 @@ const Login = () => {
     setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  function loginPost(credentials) {
+  async function loginPost(credentials) {
     // let encryptedCredentials = credentials
     // setCredentials()
-    fetchData(credentials);
+    await fetchData(credentials);
+    // console.log(data);
   }
+
+  useEffect(() => {
+    console.log('data:', data);
+    if (data === 'Login successfully') {
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    }
+  }, [data]);
 
   // const handleClick = async e => {
   const handleClick = e => {
     e.preventDefault();
     // dispatch({ type: 'LOGIN_START' });
     // navigate('/');
-
-    loginPost();
+    console.log('credentials:', credentials);
+    loginPost(credentials);
     try {
       // const res = await axios.post('/auth/login', credentials);
       // dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
@@ -53,7 +63,7 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
-        {error && <span>{error.message}</span>}
+        {data && <span>{data}</span>}
       </div>
     </div>
   );
