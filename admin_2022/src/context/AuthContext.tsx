@@ -7,11 +7,21 @@ import { createContext, useReducer, useEffect } from 'react';
 
 // type IDarkModeContext = { user: any; loading: any; error: any; dispatch: React.Dispatch<{ type: string; payload: string }> };
 
+const initial_user = JSON.stringify({
+  user: '',
+});
+
+// let temp = localStorage.getItem('user');
+// if(temp )
+// console.log('temp:', temp, typeof temp);
+// let user = JSON.parse(temp);
+
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem('user') || ''),
+  user: localStorage.getItem('user'),
   loading: false,
   error: null,
 };
+// console.log('INITIAL_STATE:', INITIAL_STATE, typeof INITIAL_STATE);
 
 export const AuthContext = createContext(INITIAL_STATE);
 
