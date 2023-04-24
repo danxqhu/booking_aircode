@@ -1,10 +1,10 @@
 module.exports = {
   // ...
   devServer: {
-    historyApiFallback: true,
-    output: {
-      publicPath: '/',
-    },
+    // historyApiFallback: true,
+    // output: {
+    //   publicPath: '/',
+    // },
     // historyApiFallback: {
     //   rewrites: [
     //     { from: /^\/$/, to: '/index.html' },

@@ -27,6 +27,8 @@ const Login = () => {
     // setCredentials()
     await fetchData(credentials);
     // console.log(data);
+
+    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTExLCJpc0FkbWluIjpmYWxzZSwiZXhwaXJlIjoxNjgyMzI4MTMzMDYyLCJpYXQiOjE2ODIzMjgwNzMsImV4cCI6MTY4MjMzMTY3M30.n_3qi5wk6aVG417R0gLPHqgGR05_SvyVp-BsIfgVY54
   }
 
   useEffect(() => {
@@ -44,12 +46,21 @@ const Login = () => {
     // dispatch({ type: 'LOGIN_START' });
     // navigate('/');
     console.log('credentials:', credentials);
-    loginPost(credentials);
-    try {
-      // const res = await axios.post('/auth/login', credentials);
-      // dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
-    } catch (err) {
-      // dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
+    if (!credentials.username) {
+      console.log('username空');
+      alert('Type your username');
+    } else if (!credentials.password) {
+      console.log('password空');
+      alert('Type your password');
+    } else {
+      loginPost(credentials);
+      try {
+        console.log();
+        // const res = await axios.post('/auth/login', credentials);
+        // dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
+      } catch (err) {
+        // dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
+      }
     }
   };
 
