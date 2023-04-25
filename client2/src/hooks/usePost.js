@@ -11,6 +11,7 @@ const usePost = (url, params) => {
     setLoading(true);
     try {
       const res = await axios.post(url, params);
+      console.log('res headers:', res.headers);
 
       setData(res.data.result);
       // stateRef.currentData = data;
