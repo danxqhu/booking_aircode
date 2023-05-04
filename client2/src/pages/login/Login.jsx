@@ -11,10 +11,12 @@ const Login = () => {
     username: undefined,
     password: undefined,
   });
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({});
 
   // const { user, loading, error, dispatch } = useContext(AuthContext);
 
-  const { fetchData, data, loading, error } = usePost(Api.bookinglogin, JSON.stringify(credentials));
+  // const { fetchData, data, loading, error } = usePost(Api.bookinglogin, JSON.stringify(credentials));
 
   const navigate = useNavigate();
 
@@ -25,10 +27,30 @@ const Login = () => {
   async function loginPost(credentials) {
     // let encryptedCredentials = credentials
     // setCredentials()
-    await fetchData(credentials);
+    // await fetchData(credentials);
     // console.log(data);
 
     // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTExLCJpc0FkbWluIjpmYWxzZSwiZXhwaXJlIjoxNjgyMzI4MTMzMDYyLCJpYXQiOjE2ODIzMjgwNzMsImV4cCI6MTY4MjMzMTY3M30.n_3qi5wk6aVG417R0gLPHqgGR05_SvyVp-BsIfgVY54
+
+    setLoading(true);
+    try {
+      const res = await axios.post(Api.bookinglogin, credentials);
+      console.log('bookinglogin res headers:', res);
+      if (res.data.errorMsg === 0) {
+        setData('Login successfully');
+      } else if (res.data.errorMsg === 1) {
+        setData('Wrong password');
+      } else if (res.data.errorMsg === 2) {
+        setData('User not found');
+      }
+
+      // setData(res.data.result);
+      // stateRef.currentData = data;
+    } catch (err) {
+      // setError(err);
+      console.log('err:', err);
+    }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -74,7 +96,7 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
-        {data && <span>{data}</span>}
+        {/* {data && <span>{data}</span>} */}
       </div>
     </div>
   );
