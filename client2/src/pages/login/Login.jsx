@@ -38,6 +38,8 @@ const Login = () => {
       console.log('bookinglogin res headers:', res);
       if (res.data.errorMsg === 0) {
         setData('Login successfully');
+
+        // 存储jwt
       } else if (res.data.errorMsg === 1) {
         setData('Wrong password');
       } else if (res.data.errorMsg === 2) {
