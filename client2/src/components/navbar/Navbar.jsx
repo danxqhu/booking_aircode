@@ -3,9 +3,12 @@ import './navbar.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
+  const user = useSelector(state => state.user.value);
+  console.log('user:', user);
   const navigate = useNavigate();
   const handleLogin = () => {
     navigate('/login');
@@ -18,7 +21,7 @@ export default function Navbar() {
         </Link>
 
         {user ? (
-          user.username
+          user.user
         ) : (
           <div className="navItems">
             <button className="navButton">Register</button>
